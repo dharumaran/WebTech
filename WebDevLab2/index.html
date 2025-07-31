@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <h1>Weather Checker</h1>
+
+  <div class="input-group">
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getWeather()">Check</button>
+  </div>
+
+  <div id="location" class="location"></div>
+  <div id="weather" class="weather-container"></div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById('city').value;
+      const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`;
+
+      try {
+        const geoRes = await fetch(geoUrl);
+        const geoData = await geoRes.json();
+
+        if (!geoData.results || geoData.results.length === 0)
+          throw new Error("City not found");
+
+        const { latitude, longitude, name, country } = geoData.results[0];
+        document.getElementById('location').innerText = `${name}, ${country}`;
+
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=relative_humidity_2m`;
+        const weatherRes = await fetch(weatherUrl);
+        const weatherData = await weatherRes.json();
+
+        const current = weatherData.current_weather;
+        const humidity = weatherData.hourly.relative_humidity_2m[0];
+
+        const weatherMetrics = [
+          { icon: "fas fa-temperature-high", label: "Temp (°C)", value: current.temperature },
+          { icon: "fas fa-wind", label: "Wind (km/h)", value: current.windspeed },
+          { icon: "fas fa-compass", label: "Direction (°)", value: current.winddirection },
+          { icon: "fas fa-water", label: "Humidity (%)", value: humidity }
+        ];
+
+        const weatherDiv = document.getElementById('weather');
+        weatherDiv.innerHTML = "";
+
+        weatherMetrics.forEach(metric => {
+          const card = document.createElement('div');
+          card.className = "card";
+          card.innerHTML = `
+            <div class="card-icon"><i class="${metric.icon}"></i></div>
+            <div class="label">${metric.label}</div>
+            <div class="value">${metric.value}</div>
+          `;
+          weatherDiv.appendChild(card);
+        });
+
+      } catch (err) {
+        document.getElementById('location').innerText = "";
+        document.getElementById('weather').innerHTML = `<p>${err.message}</p>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
