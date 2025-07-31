@@ -23,7 +23,6 @@
 .dark-mode .button:hover {
   background-color: #8e24aa;
 }
-
     #scrollTopBtn, #themeToggleBtn {
   position: fixed;
   bottom: 20px;
