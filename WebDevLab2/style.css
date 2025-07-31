@@ -1,13 +1,13 @@
 .dark-mode {
   background-color: #2e2e2e;
-  color: #f3f3f3;
+  color: #705454;
 }
 
 .dark-mode header,
 .dark-mode footer,
 .dark-mode .card {
-  background-color: #3b3b3b;
-  color: #f0f0f0;
+  background-color: #7c5454;
+  color: #b11b1b;
   border-color: #555;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .dark-mode .button {
-  background-color: #6a1b9a;
+  background-color: #ad6390;
 }
 
 .dark-mode .button:hover {
