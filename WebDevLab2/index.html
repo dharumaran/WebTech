@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<button id="dark-toggle">Dark Mode</button>
 
-  <h1>Weather Checker</h1>
+  <main>
+    <h1>Weather Checker</h1>
 
-  <div class="input-group">
-    <input type="text" id="city" placeholder="Enter city name">
-    <button onclick="getWeather()">Check</button>
-  </div>
+    <div class="input-group">
+      <label for="city" class="visually-hidden"> </label>
+      <input type="text" id="city" placeholder=" Enter City Name" aria-label="Enter City Name">
+      <button type="button" onclick="getWeather()">Check</button>
+    </div>
 
-  <div id="location" class="location"></div>
-  <div id="weather" class="weather-container"></div>
+    <section id="location" class="location"></section>
+    <section id="weather" class="weather-container"></section>
+  </main>
 
   <script>
     async function getWeather() {
@@ -25,8 +30,11 @@
       const locationDiv = document.getElementById('location');
       const weatherDiv = document.getElementById('weather');
 
+      // Clear previous results
+      locationDiv.textContent = '';
+      weatherDiv.innerHTML = '';
+
       if (!city) {
-        locationDiv.innerText = "";
         weatherDiv.innerHTML = `<p>Please enter a city name.</p>`;
         return;
       }
@@ -37,46 +45,52 @@
         const geoRes = await fetch(geoUrl);
         const geoData = await geoRes.json();
 
-        if (!geoData.results || geoData.results.length === 0)
-          throw new Error("City not found");
+        if (!geoData.results?.length) {
+          throw new Error("City not found.");
+        }
 
         const { latitude, longitude, name, country } = geoData.results[0];
-        locationDiv.innerText = `${name}, ${country}`;
+        locationDiv.textContent = `${name}, ${country}`;
 
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=relative_humidity_2m`;
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=relative_humidity_2m,uv_index,precipitation`;
         const weatherRes = await fetch(weatherUrl);
         const weatherData = await weatherRes.json();
 
-        const current = weatherData.current_weather;
-        const humidity = weatherData.hourly.relative_humidity_2m[0];
+        const { current_weather: current, hourly } = weatherData;
 
-        const weatherMetrics = [
+        const metrics = [
           { icon: "fas fa-temperature-high", label: "Temp (°C)", value: current.temperature },
           { icon: "fas fa-wind", label: "Wind (km/h)", value: current.windspeed },
           { icon: "fas fa-compass", label: "Direction (°)", value: current.winddirection },
-          { icon: "fas fa-water", label: "Humidity (%)", value: humidity }
+          { icon: "fas fa-water", label: "Humidity (%)", value: hourly.relative_humidity_2m[0] },
+          { icon: "fas fa-sun", label: "UV Index", value: hourly.uv_index[0] },
+          { icon: "fas fa-cloud-rain", label: "Rain (mm)", value: hourly.precipitation[0] }
         ];
 
-        weatherDiv.innerHTML = "";
-
-        weatherMetrics.forEach(metric => {
+        metrics.forEach(({ icon, label, value }) => {
           const card = document.createElement('div');
-          card.className = "card";
+          card.className = 'card';
           card.innerHTML = `
             <div class="card-front">
-              <i class="${metric.icon}"></i>
-              <div class="label">${metric.label}</div>
+              <i class="${icon}" aria-hidden="true"></i>
+              <div class="label">${label}</div>
             </div>
-            <div class="card-back">${metric.value}</div>
+            <div class="card-back">${value}</div>
           `;
           weatherDiv.appendChild(card);
         });
 
-      } catch (err) {
-        locationDiv.innerText = "";
-        weatherDiv.innerHTML = `<p>${err.message}</p>`;
+      } catch (error) {
+        weatherDiv.innerHTML = `<p>${error.message}</p>`;
       }
     }
   </script>
+<script>
+  const toggleBtn = document.getElementById('dark-toggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+  });
+</script>
+
 </body>
 </html>
