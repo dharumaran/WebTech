@@ -1,6 +1,11 @@
-npm create vite@latest portfolio-react -- --template react
+cd
 
 cd portfolio-react
+node -v
+npm -v
+
+npm create vite@latest portfolio-react
+
 
 npm install
 
