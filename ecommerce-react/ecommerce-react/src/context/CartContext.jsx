@@ -9,13 +9,12 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const item = prevCart.find((item) => item.id === product.id);
       if (item) {
-        // Increase quantity if already in cart
+        // If already in cart, increase quantity
         return prevCart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
+      // Else add as new item
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
@@ -26,13 +25,8 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCart([]);
 
-  const getTotalPrice = () =>
-    cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, getTotalPrice }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

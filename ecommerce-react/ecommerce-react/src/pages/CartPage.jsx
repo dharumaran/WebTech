@@ -40,7 +40,7 @@ function CartPage() {
 
       <div className="mt-10 text-center">
         <p className="text-xl text-pink-700 font-semibold mb-4">
-          Total: ${getTotalPrice().toFixed(2)}
+          Total: Rs.{getTotalPrice().toFixed(2)}
         </p>
         <button
           onClick={clearCart}

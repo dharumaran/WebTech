@@ -9,42 +9,42 @@ export const products = [
   {
     id: 1,
     name: "HoneyPie Notebook",
-    price: 12.99,
+    price: 125,
     image: notebook,
     description: "The best notebooks ever!"
   },
   {
     id: 2,
     name: "HoneyPie Pen Set",
-    price: 8.99,
+    price: 195,
     image: pens,
     description: "The best pens ever!"
   },
   {
     id: 3,
     name: "HoneyPie Sticky Notes",
-    price: 4.99,
+    price: 60,
     image: sticky,
     description: "The best sticky notes ever!"
   },
   {
     id: 4,
     name: "HoneyPie Highlighter Set",
-    price: 11.99,
+    price: 245,
     image: highlighter,
     description: "The best highlighters ever!"
   },
   {
     id: 5,
     name: "HoneyPie Calender",
-    price: 14.99,
+    price: 199,
     image: calendar,
     description: "The best calenders ever!"
   },
   {
     id: 6,
     name: "HoneyPie Utility Knife",
-    price: 13.99,
+    price: 299,
     image: knife,
     description: "The best utility knives ever!"
   },
