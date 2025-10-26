@@ -1,0 +1,158 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(to right, #3c116a, #0e244a);
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.app.dark {
+  background: linear-gradient(to right, #272436, #0a0527);
+  color: #fff;
+}
+
+/* Dark mode toggle */
+#dark-toggle {
+  align-self: flex-end;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#dark-toggle:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Main content */
+main {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  flex: 1;
+}
+
+/* Heading */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Input */
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+.input-group button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.input-group button:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* Location + main temp */
+.location {
+  margin-bottom: 2rem;
+}
+
+.location h2 {
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.current-temp {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Weather cards 3x2 grid */
+.weather-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+/* Glassmorphism cards */
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(255,255,255,0.25);
+}
+
+.card i {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.value {
+  margin-top: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Error message */
+.error {
+  color: #ff6b6b;
+  margin-top: 1rem;
+  font-weight: bold;
+}

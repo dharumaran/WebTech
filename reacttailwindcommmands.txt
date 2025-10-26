@@ -1,0 +1,35 @@
+npm create vite@latest portfolio-react -- --template react
+
+cd portfolio-react
+
+npm install
+
+npm install -D @tailwindcss/vite
+
+ in vite.config.js
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+
+
+in src/index.css
+
+@import "tailwindcss";
+
+
+in src/main.jsx
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import App from './App'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+
+
+
