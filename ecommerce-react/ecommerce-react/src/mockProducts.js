@@ -3,49 +3,86 @@ import notebook from "./assets/pink_notebook.jpg";
 import pens from "./assets/pink_pens.jpg";
 import sticky from "./assets/pink_sticky.jpg";
 import highlighter from "./assets/pink_highlighter.jpg";
-import calendar from "./assets/pink_calendar.jpg"; // ensure correct spelling
+import calendar from "./assets/pink_calendar.jpg";
 import knife from "./assets/pink_utilityknife.jpg";
+
 export const products = [
   {
     id: 1,
     name: "HoneyPie Notebook",
     price: 125,
     image: notebook,
-    description: "The best notebooks ever!"
+    description: "A cute pink notebook with smooth pages for journaling or class notes.",
+    rating: 3.8,
+    reviews: 95,
+    details: "Soft-touch cover | 120 ruled pages | A5 size | Recyclable paper",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
   {
     id: 2,
     name: "HoneyPie Pen Set",
     price: 195,
     image: pens,
-    description: "The best pens ever!"
+    description: "Smooth, pastel-colored pens for everyday use.",
+    rating: 4.9,
+    reviews: 120,
+    details: "Includes 5 pens | Smudge-free | Quick-dry ink | Refillable",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
   {
     id: 3,
     name: "HoneyPie Sticky Notes",
     price: 60,
     image: sticky,
-    description: "The best sticky notes ever!"
+    description: "Adorable pink sticky notes for reminders and journaling.",
+    rating: 4.7,
+    reviews: 80,
+    details: "100 sheets | 3x3 inches | Strong adhesive | Easy to remove",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
   {
     id: 4,
     name: "HoneyPie Highlighter Set",
     price: 245,
     image: highlighter,
-    description: "The best highlighters ever!"
+    description: "Set of pastel highlighters perfect for neat notes.",
+    rating: 4.9,
+    reviews: 140,
+    details: "Pack of 6 colors | No bleed | Smooth tip | Quick-dry ink",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
   {
     id: 5,
-    name: "HoneyPie Calender",
+    name: "HoneyPie Calendar",
     price: 199,
     image: calendar,
-    description: "The best calenders ever!"
+    description: "Aesthetic pink desk calendar to keep you organized all year.",
+    rating: 3.6,
+    reviews: 75,
+    details: "2025 edition | Spiral bound | Eco-friendly paper | Monthly goals section",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
   {
     id: 6,
     name: "HoneyPie Utility Knife",
     price: 299,
     image: knife,
-    description: "The best utility knives ever!"
+    description: "Stylish pink cutter for crafts and stationery needs.",
+    rating: 3.8,
+    reviews: 60,
+    details: "Retractable blade | Safety lock | Ergonomic handle | Refillable blades",
+    stock: "In Stock",
+    shipping: "Free shipping over ₹499",
+    returns: "7-day returns",
   },
 ];
