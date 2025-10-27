@@ -61,9 +61,9 @@ export default function App() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-100">
-      <div className="container bg-white p-8 rounded-xl shadow-2xl border border-gray-200 max-w-lg w-full">
-        <h1 className="text-2xl font-extrabold text-center text-gray-800 mb-6 flex items-center justify-center gap-2">
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-200">
+      <div className="container bg-white p-8 rounded-xl shadow-2xl border border-gray-70000 max-w-lg w-full">
+        <h1 className="text-2xl font-bold text-center text-gray-500 mb-6 flex items-center justify-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 text-blue-600"
@@ -99,7 +99,7 @@ export default function App() {
                 name="event"
                 value={formData.event}
                 onChange={handleChange}
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
+                className="mt-1 block w-full px-4 py-2 borderborder-gray-400 rounded-md shadow-sm"
               >
                 <option value="">Choose an event</option>
                 <option value="annual_gala">Annual Gala Dinner</option>
@@ -244,7 +244,7 @@ export default function App() {
           <div>
             <label
               htmlFor="comments"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-100"
             >
               Comments (Optional)
             </label>

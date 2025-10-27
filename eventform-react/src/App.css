@@ -5,7 +5,9 @@
   padding: 2rem;
   text-align: center;
 }
-
+.form-data-input::placeholder {
+  color: #d02095; /* Replace #ff0000 with your desired color */
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,5 +41,5 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #9da0ab;
 }
