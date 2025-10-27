@@ -10,13 +10,13 @@ html, body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: linear-gradient(to right, #3c116a, #0e244a);
-  color: #fff;
+  background: linear-gradient(to right, #684a89, #719fac);
+  color: #e6dfee;
   transition: background 0.3s;
 }
 
 .app.dark {
-  background: linear-gradient(to right, #272436, #0a0527);
+  background: linear-gradient(to right, #4e486a, #0a0527);
   color: #fff;
 }
 
