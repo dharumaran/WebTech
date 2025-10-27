@@ -97,7 +97,9 @@ return (
 </Section>
 
 
-<footer className="py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {data.name}. Built with React + Tailwind.</footer>
+<footer className="py-8 text-center text-sm text-gray-500">© {new Date().getFullYear()} {data.name}
+  
+</footer>
 </main>
 </div>
 );

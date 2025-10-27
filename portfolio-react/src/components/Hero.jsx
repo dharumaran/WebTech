@@ -11,7 +11,7 @@ return (
       <p className="text-sky-600 font-medium mt-2">{title}</p>
       <p className="mt-4 text-gray-700 leading-relaxed">{summary}</p>
       <div className="mt-6 flex gap-4">
-        <a href="#projects" className="px-4 py-2 rounded-md bg-sky-600 text-white">See projects</a>
+        <a href="#projects" className="px-4 py-2 rounded-md bg-sky-400 text-white">See projects</a>
         <a href="#contact" className="px-4 py-2 rounded-md border">Contact me</a>
       </div>
     </div>
