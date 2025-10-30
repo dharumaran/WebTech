@@ -1,125 +1,117 @@
-/* General Page Setup */
-
-/* Make the whole app fill the viewport height */
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #fffafc;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Ensure the main app container takes full height */
-.App {
+/* Layout */
+.app {
   min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Make sure the grid expands and centers properly */
-.post-grid {
+.content {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
   padding: 2rem;
-}
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  background: #fffafc;
-  color: #333;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #ffb6c1;
+  background: #ffb6c1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
-.navbar a {
+.nav-links a {
+  margin-left: 1rem;
   text-decoration: none;
   color: #fff;
   font-weight: 600;
 }
-.logo {
-  font-size: 1.5rem;
-}
-.links a {
+.logout-btn {
   margin-left: 1rem;
-}
-
-/* Home Page */
-.home {
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Pinterest-style Grid */
-.post-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem 2rem;
-}
-
-/* Post Cards */
-.post-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-.post-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.post-card p {
-  padding: 0.75rem;
-  font-weight: 500;
-  text-align: left;
-}
-
-/* Add Post Page */
-.add-post-page {
-  padding: 2rem;
-  text-align: center;
-}
-
-.add-post-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.add-post-form input {
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.add-post-form button {
-  padding: 0.8rem;
+  background: none;
   border: none;
-  background-color: #ff7fa0;
   color: white;
-  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.add-post-form button:hover {
-  background-color: #ff5c89;
+/* Posts */
+.home {
+  text-align: center;
+  width: 100%;
+}
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.post-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+.post-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.comment-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.comment-box input {
+  flex: 1;
+  padding: 0.4rem;
+}
+.comment-box button {
+  padding: 0.4rem 0.8rem;
+  background: #ff7fa0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Auth */
+.auth-page {
+  text-align: center;
+  margin-top: 5rem;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  margin: 1rem auto;
+}
+.auth-form input, .auth-form button {
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.auth-form button {
+  background: #ff7fa0;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
