@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+
 // POST new product
 router.post("/", async (req, res) => {
   try {

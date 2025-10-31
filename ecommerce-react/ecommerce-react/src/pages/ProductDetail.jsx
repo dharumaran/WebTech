@@ -8,6 +8,7 @@ function ProductDetail() {
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
 
+  // Fetch product by ID from backend
   useEffect(() => {
     fetch(`http://localhost:5000/api/products/${id}`)
       .then((res) => res.json())
@@ -15,10 +16,14 @@ function ProductDetail() {
       .catch((err) => console.error("Error fetching product:", err));
   }, [id]);
 
-  if (!product) return <p className="text-center text-gray-500">Product not found</p>;
+  if (!product)
+    return (
+      <p className="text-center text-gray-500 mt-10">Loading product details...</p>
+    );
 
   return (
     <div className="max-w-5xl mx-auto p-8 flex flex-col md:flex-row gap-10 bg-pink-50 rounded-xl shadow-md">
+      {/* Image Section */}
       <div className="flex-1 flex justify-center">
         <img
           src={product.image}
@@ -27,33 +32,45 @@ function ProductDetail() {
         />
       </div>
 
+      {/* Product Info */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-pink-700 mb-3">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-pink-700 mb-3">
+            {product.name}
+          </h1>
+
+          {/* Price */}
           <p className="text-2xl font-semibold text-gray-800 mb-4">
-            Rs.{product.price.toFixed(2)}
+            Rs.{product.price?.toFixed(2)}
           </p>
 
+          {/* Rating */}
           <div className="flex items-center gap-1 mb-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
                 size={18}
                 className={
-                  i < Math.round(product.rating)
+                  i < Math.round(product.rating || 0)
                     ? "text-yellow-500 fill-yellow-500"
                     : "text-gray-300"
                 }
               />
             ))}
             <span className="ml-2 text-gray-600">
-              {product.rating} ({product.reviews} Reviews)
+              {product.rating || 0} ({product.reviews || 0} Reviews)
             </span>
           </div>
 
-          <p className="text-gray-700 mb-4 leading-relaxed">{product.description}</p>
+          {/* Description */}
+          <p className="text-gray-700 mb-4 leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Extra Details */}
           <p className="text-sm text-gray-600 mb-6">{product.details}</p>
 
+          {/* Info Badges */}
           <div className="space-y-1 text-gray-700 mb-8">
             <p>{product.stock}</p>
             <p>{product.shipping}</p>
@@ -61,6 +78,7 @@ function ProductDetail() {
           </div>
         </div>
 
+        {/* Add to Cart Button */}
         <button
           onClick={() => addToCart(product)}
           className="bg-pink-400 text-white px-6 py-3 rounded-lg hover:bg-pink-500 transition w-fit"
