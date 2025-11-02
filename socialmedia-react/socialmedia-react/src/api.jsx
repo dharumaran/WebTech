@@ -1,0 +1,18 @@
+// central axios instance
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: "/api", // your Vite proxy should forward /api to http://localhost:5000
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
+
+// add token automatically if present
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+export default api;
